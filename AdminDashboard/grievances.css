@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.profile-section h2,
+.grievance-section h2 {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.status-select {
+    padding: 5px;
+}
+#logoutBtn{
+    /* background-color: #ff9f43; */
+    /* color: #fff; */
+    margin-top: 2%;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    height:40px;
+    cursor: pointer;
+}

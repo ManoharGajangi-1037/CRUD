@@ -1,0 +1,92 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <div class="container">
+        <h2>Grievances</h2>
+        <table id="grievancesTable">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically populated with grievance data -->
+            <!-- </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html> --> 
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="admin.css">
+</head>
+<body>
+    <header>
+        <div class="top">
+            <div class="heading1"> <h1>Admin Dashboard</h1></div>       
+        <div id="top-box">
+            <div id="profile">         
+                <div class="AdminName"><p><strong>Name:</strong><span id="adminName"></span></p></div>  
+                <div class="EmailName"><p><strong>Email:</strong><span id="adminEmail"></span></p></div>
+            </div>
+            <div class="login-btn"> <button id="logoutBtn">Logout</button></div>
+        </div>
+    </div>
+       
+    </header>
+
+    <div class="container">
+        <h2>Filters</h2>
+        <div class="filters">
+            <label for="hostelSelect">Hostel:</label>
+            <select id="hostelSelect">
+                <option value="BH-I">BH-I</option>
+                <option value="BH-II">BH-II</option>
+                <option value="GH-I">GH-I</option>
+                <option value="GH-II">GH-II</option>
+            </select>
+
+            <label for="wingSelect">Wing:</label>
+            <select id="wingSelect">
+                <option value="West">West</option>
+                <option value="East">East</option>
+                <option value="North">North</option>
+                <option value="South">South</option>
+            </select>
+
+            <label for="IssueSelect">Issue:</label>
+            <select id="IssueSelect">
+                <option value="Electric">Electric</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Water">Water</option>
+            </select>
+        </div>
+
+        <button id="viewGrievancesBtn">View Grievances</button>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Student Dashboard</h1>
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <div class="container">
+        <div class="profile-section">
+            <h2>Profile</h2>
+
+            <div id="profile">
+            <p><strong>Name:</strong> <span id="studentName"></span></p>
+            <p><strong>Email:</strong> <span id="studentEmail"></span></p>   
+            </div>
+        </div>
+
+        <div class="grievance-section">
+            <h2>Submit Grievance</h2>
+            <form id="grievanceForm">
+                <div>
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" required>
+                </div>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="id-name" name="name" required>
+                </div>
+                <div>
+                    <label for="hostel">Hostel:</label>
+                    <input type="text" id="hostel" name="hostel" required>
+                </div>
+                <div>
+                    <label for="wing">Wing:</label>
+                    <input type="text" id="wing" name="wing" required>
+                </div>
+                <div>
+                    <label for="issue">Issue:</label>
+                    <input type="text" id="issue" name="issue" required>
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="5" required></textarea>
+                </div>
+                <button id="submit-button" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="grievance-section">
+            <h2>View Grievances</h2>
+            <button id="viewGrievancesBtn">View Grievances</button>
+          </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

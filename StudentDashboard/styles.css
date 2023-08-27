@@ -1,0 +1,93 @@
+/* Add this CSS code to your existing "styles.css" file */
+
+body {
+    background-color: #f7f3e9;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #ff9f43;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: #fff;
+    margin: 0;
+    text-align: center;
+}
+
+button {
+    background-color: #ff9f43;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.container {
+    background-color: #f9d8b2;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h2 {
+    color: #ff9f43;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #ff9f43;
+    color: #fff;
+}
+
+.pending-status {
+    background-color: red;
+}
+
+.solved-status {
+    background-color: green;
+}
+
+
+/* New styles for Student Dashboard */
+
+.profile-section {
+    margin-bottom: 20px;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+form label {
+    flex-basis: 150px;
+}
+
+form input[type="text"],
+form textarea {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+form button[type="submit"] {
+    margin-top: 10px;
+}

@@ -1,0 +1,179 @@
+/* body {
+    background-color: #f7f3e9;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #ff9f43;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: #fff;
+    margin: 0;
+    text-align: center;
+} */
+
+/* General Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  #top-box{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;  
+    /* border :2px solid red; */
+  }
+  header {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .login-btn{
+     padding-left: 220%;
+  }
+  h1 {
+    margin: 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  /* Admin Dashboard Styles */
+  
+  #adminName,
+  #adminEmail {
+    font-weight: bold;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters label {
+    font-weight:bold;
+    margin-right:10px;
+  }
+  #profile{
+    display:flex;
+    justify-content:space-evenly;
+    padding-left:5%;
+    /* border:2px solid rgb(67, 50, 163); */
+  }
+  .EmailName{
+     padding-left: 10%;
+  }
+  .filters select {
+    padding: 5px;
+    border-radius: 4px;
+  }
+  .top{
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+    padding-left: 0%;
+    /* border:2px solid rgb(26, 60, 199); */
+  }
+  
+  /* Student Dashboard Styles */
+  .heading1{
+    display: flex;
+    padding-left: 0%;
+
+  }
+  .studentName,
+  .studentEmail {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  /* View Grievances Styles */
+  
+  #grievancesTable {
+    margin-top: 20px;
+  }
+  
+  #grievancesTable th,
+  #grievancesTable td {
+    text-align: center;
+  }
+  
+
+button {
+    background-color: #ff9f43;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.container {
+    background-color: #f9d8b2;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h2 {
+    color: #ff9f43;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #ff9f43;
+    color: #fff;
+}
+
+.pending-status {
+    background-color: red;
+}
+
+.solved-status {
+    background-color: green;
+}
