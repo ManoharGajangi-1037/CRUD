@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutButton.addEventListener('click', handleLogout);
   });
   
-  function handleLogout(event) {
+function handleLogout(event) {
     event.preventDefault();
     const name = document.getElementById('studentName').textContent;
     const email = document.getElementById('studentEmail').textContent;
     const url = `/StudentDashboard/student.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
     window.location.href = url;
-  }
+}
   

@@ -1,9 +1,7 @@
 // Import dependencies
 const express =require('express');
-
 const mongoose =require('mongoose');
 const nodemailer = require('nodemailer');
-
 const bodyParser =require('body-parser');
 
 //Create an instance of the express application
@@ -14,7 +12,6 @@ app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Your routes...
-
 //Connect to MongoDB
 //mongodb://localhost:27017
 mongoose.connect('mongodb://localhost:27017/dorm', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -91,35 +88,73 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
   });
 
+  // app.post('/signup', (req, res) => {
+  //   // Get the data from the request body
+  //   const name =req.body.name;
+  //   const email = req.body.email;
+  //   const password = req.body.password;
+  //   const user = req.body.user;
+  //   console.log(name);
+  //   console.log(email);
+  //   // Create a new registration document
+  //   const registration = new Registration({
+  //     name :name,
+  //     email: email,
+  //     password: password,
+  //     user: user
+  //   });
+  
+  //   // Save the registration to the database
+  //   registration.save()
+  //     .then(() => {
+  //       console.log('Registration saved:', registration);
+  //       res.sendStatus(200); // Send a success response
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error saving registration:', error);
+  //       res.sendStatus(500); // Send an error response
+  //     });
+  // });
+  
+
 
   app.post('/signup', (req, res) => {
-    // Get the data from the request body
-    const name =req.body.name;
+    const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
     const user = req.body.user;
-    console.log(name);
-    console.log(email);
+
+    // Check if the email ends with "@rgukt.ac.in" or "@gmail.com"
+    const isRguktEmail = email.endsWith('@rgukt.ac.in');
+    const isGmailEmail = email.endsWith('@gmail.com');
+
+    if (!isRguktEmail && !isGmailEmail) {
+      return res.status(400).send('Invalid email format');
+    }
+
+    // Check if the user is either "Admin" or "Student"
+    if (user !== 'Admin' && user !== 'Student') {
+      return res.status(400).send('Invalid email format');
+    }
     // Create a new registration document
     const registration = new Registration({
-      name :name,
-      email: email,
-      password: password,
-      user: user
+        name: name,
+        email: email,
+        password: password,
+        user: user
     });
-  
+
     // Save the registration to the database
     registration.save()
-      .then(() => {
-        console.log('Registration saved:', registration);
-        res.sendStatus(200); // Send a success response
-      })
-      .catch((error) => {
-        console.error('Error saving registration:', error);
-        res.sendStatus(500); // Send an error response
-      });
-  });
-  
+        .then(() => {
+            console.log('Registration saved:', registration);
+            res.sendStatus(200); // Send a success response
+        })
+        .catch((error) => {
+            console.error('Error saving registration:', error);
+            res.sendStatus(500); // Send an error response
+        });
+});
 
   app.post('/login', (req, res) => {
     const email = req.body.email;
@@ -144,6 +179,7 @@ app.get('/', (req, res) => {
         res.sendStatus(500); // Send an error response
       });
   });
+
   app.get('/get-grievances', (req, res) => {
     const name = req.query.name;
   
@@ -298,5 +334,3 @@ function sendEmailToUser(to, subject, text) {
 app.listen(4000, () => {
   console.log('Server started on port 4000');
 });
-
-
