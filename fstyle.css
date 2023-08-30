@@ -1,0 +1,98 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Set background color and font styles */
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Center the content vertically and horizontally */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Stack items vertically */
+  }
+  
+  /* Style the password recovery box */
+  .password-recovery-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* Style the box heading */
+  .box-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the input fields */
+  /* ... */
+/* Style the input fields */
+.name, .email, .user {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Add spacing between input fields */
+  .name + .email,
+  .email + .user {
+    margin-top: 10px;
+  }
+  /* ... */
+  
+  /* Style the buttons */
+  .submit-btn, .back-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .submit-btn:hover, .back-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the recovery feedback message */
+  .recovery-feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .recovery-feedback.green {
+    color: green;
+  }
+  
+  .recovery-feedback.red {
+    color: red;
+  }
+  
+  /* Add media query for responsiveness */
+  @media (max-width: 600px) {
+    .password-recovery-box {
+      max-width: 100%;
+    }
+  }
+  

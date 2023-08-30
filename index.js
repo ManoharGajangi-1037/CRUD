@@ -11,9 +11,8 @@ const signupFeedback = document.querySelector('.signup-box .feedback');
 signup.addEventListener("click", () => {
 	slider.classList.add("moveslider");
 	formSection.classList.add("form-section-move");
-  signupFeedback.classList.remove('success'); // Remove the 'success' class
-  signupFeedback.textContent='';
-  signupFeedback.classList.remove('error');
+    signupFeedback.classList.remove('success'); // Remove the 'success' class
+    signupFeedback.textContent='';
 });
 
 login.addEventListener("click", () => {
@@ -171,6 +170,11 @@ loginButton.addEventListener('click', () => {
     });
 });
 
+const forgotPasswordButton = document.querySelector('.forgot-password');
+
+forgotPasswordButton.addEventListener('click', () => {
+  window.location.href = 'forgot-password.html';
+});
 // Disable back navigation on index.html
 window.history.pushState(null, '', window.location.href);
 window.onpopstate = function(event) {

@@ -330,6 +330,56 @@ function sendEmailToUser(to, subject, text) {
   });
 }
 
+
+
+// Add a new endpoint to handle password recovery
+app.post('/forgot-password', async (req, res) => {
+  const { name, email, user } = req.body;
+  console.log("came here");
+  try {
+    // Find the user with the provided name, email, and user type
+    const userRecord = await Registration.findOne({ name, email, user }).exec();
+   
+    if (userRecord) {
+      console.log("found");
+      // Send the password to the user's email
+      const password = userRecord.password;
+      sendEmailtoUser(email, 'Password Recovery', `Your password is: ${password}`);
+      res.sendStatus(200); // Password sent successfully
+    } else {
+      res.sendStatus(404); // User not found
+    }
+  } catch (error) {
+    console.error('Error during password recovery:', error);
+    res.sendStatus(500); // Internal server error
+  }
+});
+
+
+function sendEmailtoUser(to, subject, text) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail', // You can change this to your email service provider
+    auth: {
+      user: 'b181166@rgukt.ac.in', // Your email
+      pass: '9701583782' // Your password or app-specific password
+    }
+  });
+
+  const mailOptions = {
+    from: 'b181166@rgukt.ac.in', // Your email
+    to: to,
+    subject: subject,
+    text: text
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+    } else {
+      console.log('Email sent:', info.response);
+    }
+  });
+}
 // Start the server
 app.listen(4000, () => {
   console.log('Server started on port 4000');

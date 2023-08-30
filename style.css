@@ -289,3 +289,7 @@ header {
     background-color: #f8d7da;
     color: #721c24;
 }
+.forgot-password{
+    margin-left: 50%;
+	border-radius: 10%;
+}
