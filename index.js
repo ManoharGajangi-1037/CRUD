@@ -3,9 +3,17 @@ let login = document.querySelector(".login");
 let slider = document.querySelector(".slider");
 let formSection = document.querySelector(".form-section");
 
+
+
+const signupButton = document.querySelector('#SIGN');
+const signupFeedback = document.querySelector('.signup-box .feedback');
+
 signup.addEventListener("click", () => {
 	slider.classList.add("moveslider");
 	formSection.classList.add("form-section-move");
+  signupFeedback.classList.remove('success'); // Remove the 'success' class
+  signupFeedback.textContent='';
+  signupFeedback.classList.remove('error');
 });
 
 login.addEventListener("click", () => {
@@ -57,14 +65,9 @@ login.addEventListener("click", () => {
 // Prevent navigating back by using the browser's back button
 
 
-
-
-const signupButton = document.querySelector('#SIGN');
-
 // Add click event listener to the signup button
 signupButton.addEventListener('click', () => {
   // Get the form input values
-  alert("signup button is clicked");
   const name = document.querySelector('.signup-name').value;
   const email = document.querySelector('.signup-email').value;
   const password = document.querySelector('.signup-password').value;
@@ -88,31 +91,34 @@ signupButton.addEventListener('click', () => {
   };
 
   // Send the POST request using the Fetch API
+  
   fetch('/signup', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
     },
     body: JSON.stringify(requestBody)
-  })
-    .then(response => {
-      if (response.ok) {
+})
+.then(response => {
+    if (response.ok) {
         console.log('Signup success');
-        name.value="";
-        user.value="";
-        // Handle successful signup
-      } else {
+        signupFeedback.textContent = 'Signup successful!';
+        signupFeedback.classList.add('success'); // Apply the 'success' class
+        signupFeedback.classList.remove('error'); // Remove the 'error' class
+    } else {
         console.log('Signup failed');
-        // Handle signup failure
-      }
-    })
-    .catch(error => {
-      console.error('Error during signup:', error);
-      // Handle error during signup
-    });
+        signupFeedback.textContent = 'Signup failed!';
+        signupFeedback.classList.add('error'); // Apply the 'error' class
+        signupFeedback.classList.remove('success'); // Remove the 'success' class
+    }
+})
+.catch(error => {
+    console.error('Error during signup:', error);
+    signupFeedback.textContent = 'Error during signup!';
+    signupFeedback.classList.add('error'); // Apply the 'error' class
+    signupFeedback.classList.remove('success'); // Remove the 'success' class
 });
-
-
+});
 
 
 // ... Your existing code ...
@@ -151,7 +157,7 @@ loginButton.addEventListener('click', () => {
         }
     })
     .then(data => {
-        if (data.user === 'Admin') {
+        if (data.user === 'Admin'){
             window.location.href = `/AdminDashboard/admin.html?name=${data.name}&email=${data.email}`;
         } else if (data.user === 'Student') {
             window.location.href = `/StudentDashboard/student.html?name=${data.name}&email=${data.email}`;
@@ -165,59 +171,8 @@ loginButton.addEventListener('click', () => {
     });
 });
 
-// ... Rest of your existing code ...
-
-// Get the login button element
-// const loginButton = document.querySelector('#LOGIN');
-
-// // Add click event listener to the login button
-// loginButton.addEventListener('click', () => {
-//   // Get the email and password values from the input fields
-//   const email = document.querySelector('.email').value;
-//   const password = document.querySelector('.password').value;
-
-//   // Create the request body object
-//   const requestBody = {
-//     email: email,
-//     password: password
-//   };
-
-//   // Send the POST request using the Fetch API
-//   fetch('/login', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(requestBody)
-//   })
-//     .then(response => {
-//       if (response.ok) {
-//         console.log('Login success');
-//         return response.json(); // Parse the response body as JSON
-//       } else {
-//         console.log('Login failed');
-//         throw new Error('Login failed'); // Throw an error to be caught in the catch block
-//       }
-//     })
-//     .then(data => {
-//       // Check the user type and redirect accordingly
-//       if (data.user === 'Admin') {
-//         window.location.href = `/AdminDashboard/admin.html?name=${data.name}&email=${data.email}`;
-//       } else if (data.user === 'Student') {
-//         window.location.href = `/StudentDashboard/student.html?name=${data.name}&email=${data.email}`;
-//       }
-//     })
-//     .catch(error => {
-//       console.error('Error during login:', error);
-//       // Handle error during login
-//     });
-// });
-
 // Disable back navigation on index.html
 window.history.pushState(null, '', window.location.href);
 window.onpopstate = function(event) {
     window.history.pushState(null, '', window.location.href);
 };
-
-// Rest of your existing code...
-// ... (signup, login event listeners, fetch requests, etc.)
