@@ -38,7 +38,10 @@ body {
     /* border :2px solid red; */
   }
   header {
-    background-color: #333;
+    /* background-color: #333; */
+    padding-top: 2%;
+    padding-left: 1%;
+    background-color:#4267b2;
     color: #fff;
   }
   .login-btn{
@@ -80,6 +83,7 @@ body {
   #adminName,
   #adminEmail {
     font-weight: bold;
+    margin-left: 0%;
   }
   
   .filters {
@@ -136,16 +140,22 @@ body {
   
 
 button {
-    background-color: #ff9f43;
-    color: #fff;
+  background-color: #cbd6f5;
+    /* color: #fff; */
+    color:black;
+    font-weight: bold;
     border: none;
     border-radius: 3px;
     padding: 10px 20px;
     cursor: pointer;
 }
 
+#viewGrievancesBtn{
+  background-color: #e9ecf3;
+  font-weight: bold;
+}
 .container {
-    background-color: #f9d8b2;
+  background-color: #cbd6f5;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -153,7 +163,7 @@ button {
 }
 
 h2 {
-    color: #ff9f43;
+  color: #041f22;
 }
 
 table {

@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #ff9f43;
+    background-color:#4267b2;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -20,8 +20,10 @@ h1 {
 }
 
 button {
-    background-color: #ff9f43;
-    color: #fff;
+      /* background-color: #cbd6f5; */
+    /* background-color: #ff9f43;  */
+    /* color: #fff; */
+    font-weight: 900;
     border: none;
     border-radius: 3px;
     padding: 10px 20px;
@@ -29,7 +31,7 @@ button {
 }
 
 .container {
-    background-color: #f9d8b2;
+    background-color: #cbd6f5;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -37,7 +39,8 @@ button {
 }
 
 h2 {
-    color: #ff9f43;
+    /* color: #ff9f43; */
+     color: #041f22;
 }
 
 table {
@@ -53,7 +56,7 @@ td {
 }
 
 th {
-    background-color: #ff9f43;
+    background-color:#4267b2;
     color: #fff;
 }
 

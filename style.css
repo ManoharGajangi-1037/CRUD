@@ -14,10 +14,22 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	gap: 30px;
-	background-color: rgb(231, 231, 231);
+	gap: 30px;background-image: url("hostel9.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+	/* background-color: rgb(231, 231, 231); */
+	background-color: rgba(231, 231, 231, 0.7); /* Adjust the opacity as needed */
 }
-
+.about-btn,
+.contact-btn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+}
 header {
 	width: 100%;
 	display: flex;
@@ -27,6 +39,11 @@ header {
 	gap: 8px;
 }
 
+.nav-buttons{
+	display: flex;
+	justify-content: flex-end;
+    margin-left: 80%;
+}
 .heading {
 	color: green;
 	font-size: 40px;

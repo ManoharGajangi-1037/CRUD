@@ -229,6 +229,9 @@
 
 // Add click event listener to the signup button
 // Get the login button element
+
+document.querySelector('.email').value = ''; // Clear email input field
+      document.querySelector('.password').value = '';
 const loginButton = document.querySelector('#LOGIN');
 const errorMessage = document.querySelector('.error-message'); // New error message element
 errorMessage.style.display = 'none';

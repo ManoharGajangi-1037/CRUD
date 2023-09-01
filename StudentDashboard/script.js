@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function handleGrievanceSubmission(event) {
     event.preventDefault();
-    alert("yes working");
     const idInput = document.getElementById('id');
     const nameInput = document.getElementById('id-name');
     const hostelInput = document.getElementById('hostel');
