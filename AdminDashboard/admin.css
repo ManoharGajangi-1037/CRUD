@@ -41,14 +41,17 @@ body {
     background-color: #333;
     color: #fff;
   }
-
   .login-btn{
-       padding-left: 220%;
+       display:flex;
+       justify-content: space-around;
+       padding-left: 130%;
   }
   h1 {
     margin: 0;
   }
-  
+  #logoutBtn{
+    margin-left: 10%;
+  }
   button {
     padding: 10px 20px;
     background-color: #333;
