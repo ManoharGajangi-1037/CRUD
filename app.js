@@ -118,43 +118,117 @@ app.get('/', (req, res) => {
   
 
 
-  app.post('/signup', (req, res) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const user = req.body.user;
+//   app.post('/signup', (req, res) => {
+//     const name = req.body.name;
+//     const email = req.body.email;
+//     const password = req.body.password;
+//     const user = req.body.user;
 
-    // Check if the email ends with "@rgukt.ac.in" or "@gmail.com"
-    const isRguktEmail = email.endsWith('@rgukt.ac.in');
-    const isGmailEmail = email.endsWith('@gmail.com');
+//     // Check if the email ends with "@rgukt.ac.in" or "@gmail.com"
+//     const isRguktEmail = email.endsWith('@rgukt.ac.in');
+//     const isGmailEmail = email.endsWith('@gmail.com');
 
-    if (!isRguktEmail && !isGmailEmail) {
-      return res.status(400).send('Invalid email format');
+//     if (!isRguktEmail && !isGmailEmail) {
+//       return res.status(400).send('Invalid email format');
+//     }
+
+//     // Check if the user is either "Admin" or "Student"
+//     if (user !== 'Admin' && user !== 'Student') {
+//       return res.status(400).send('Invalid email format');
+//     }
+//     // Create a new registration document
+//     const registration = new Registration({
+//         name: name,
+//         email: email,
+//         password: password,
+//         user: user
+//     });
+
+//     // Save the registration to the database
+//     registration.save()
+//         .then(() => {
+//             console.log('Registration saved:', registration);
+//             res.sendStatus(200); // Send a success response
+//         })
+//         .catch((error) => {
+//             console.error('Error saving registration:', error);
+//             res.sendStatus(500); // Send an error response
+//         });
+// });
+
+
+
+app.post('/signup', async (req, res) => {
+  const { name, email,user} = req.body;
+  // console.log("reached here");
+  // Generate a random password if it's not provided
+  const generatedPassword =generateRandomPassword();
+
+  try {
+    // Check if a user with the same email already exists
+    const existingUser = await Registration.findOne({ email }).exec();
+    if (existingUser) {
+      return res.status(400).send('User with this email already exists');
     }
 
-    // Check if the user is either "Admin" or "Student"
-    if (user !== 'Admin' && user !== 'Student') {
-      return res.status(400).send('Invalid email format');
-    }
     // Create a new registration document
     const registration = new Registration({
-        name: name,
-        email: email,
-        password: password,
-        user: user
+      name,
+      email,
+      password: generatedPassword,
+      user,
     });
 
     // Save the registration to the database
-    registration.save()
-        .then(() => {
-            console.log('Registration saved:', registration);
-            res.sendStatus(200); // Send a success response
-        })
-        .catch((error) => {
-            console.error('Error saving registration:', error);
-            res.sendStatus(500); // Send an error response
-        });
+    await registration.save();
+
+    // Send the generated password as an email to the user
+    sendPasswordEmail(email, generatedPassword);
+
+    res.sendStatus(200); // Send a success response
+  } catch (error) {
+    console.error('Error during user registration:', error);
+    res.sendStatus(500); // Send an error response
+  }
 });
+
+// Function to generate a random password
+function generateRandomPassword() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const passwordLength = 8;
+  let password = '';
+  for (let i = 0; i < passwordLength; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    password += characters.charAt(randomIndex);
+  }
+  return password;
+}
+
+// Function to send the password as an email to the user
+function sendPasswordEmail(to, password) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail', // Change this to your email service provider
+    auth: {
+      user: 'b181166@rgukt.ac.in', // Your email address
+      pass: '9701583782', // Your email password or app-specific password
+    },
+  });
+
+  const mailOptions = {
+    from: 'b181166@rgukt.ac.in', // Your email address
+    to,
+    subject: 'Your Account Password',
+    text: `Your account password is: ${password}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+    } else {
+      console.log('Password email sent:', info.response);
+    }
+  });
+}
 
   app.post('/login', (req, res) => {
     const email = req.body.email;
@@ -180,6 +254,31 @@ app.get('/', (req, res) => {
       });
   });
 
+
+
+  app.post('/change-password', async (req, res) => {
+    const { email, currentPassword, newPassword } = req.body;
+  
+    try {
+      // Find the user by email
+      const user = await Registration.findOne({ email }).exec();
+  
+      // Check if the current password matches
+      if (user && user.password === currentPassword) {
+        // Update the password with the new one
+        user.password = newPassword;
+        await user.save();
+  
+        res.status(200).json({ success: true });
+      } else {
+        res.status(401).json({ success: false, message: 'Invalid current password' });
+      }
+    } catch (error) {
+      console.error('Error changing password:', error);
+      res.sendStatus(500); // Send an error response
+    }
+  });
+  
   app.get('/get-grievances', (req, res) => {
     const name = req.query.name;
   
@@ -275,6 +374,8 @@ app.get('/', (req, res) => {
 // });
 
 // // Rest of the code...
+
+
 
 
 app.put('/grievances/:id', async (req, res) => {
@@ -380,6 +481,11 @@ function sendEmailtoUser(to, subject, text) {
     }
   });
 }
+
+// const mongoose = require('mongoose');
+// const Registration = mongoose.model('Registration'); // Assuming you have defined the Registration model as shown in your code
+
+
 // Start the server
 app.listen(4000, () => {
   console.log('Server started on port 4000');

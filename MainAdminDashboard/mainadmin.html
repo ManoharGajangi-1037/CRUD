@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ... Your existing meta tags and title ... -->
+  <link rel="stylesheet" href="mainadmin.css">
+</head>
+<body>
+  <header>
+    <h1 class="heading">Root Dashboard</h1>
+    <button id="backToHomeButton">Back to Home</button>
+  </header>
+
+  <div class="container">
+    <div class="mainadmin-box">
+      <h2>Welcome MainAdmin</h2>
+      <p>Name: <span id="adminName"></span></p>
+      <p>Email: <span id="adminEmail"></span></p>
+      <!-- Display success message here -->
+      <form id="signupForm">
+        <h3>Create New User</h3>
+        <input type="text" id="newUserName" placeholder="Name">
+        <input type="email" id="newUserEmail" placeholder="Email">
+        <select id="newUserRole">
+          <option value="Admin">Admin</option>
+          <option value="Student">Student</option>
+        </select>
+        <!-- Move the button below the form elements -->
+        <div id="successMessage" style="display: none; color: green; margin-bottom: 10px;">
+            Successfully created a user!
+        </div>
+        <div>
+        <button type="submit">Create User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="mainadmin.js"></script>
+</body>
+</html>

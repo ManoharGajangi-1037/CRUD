@@ -88,6 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = `viewgrievances.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
     window.location.href = url;
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Existing code...
+  
+    const changePasswordButton = document.getElementById('changePasswordBtn');
+    changePasswordButton.addEventListener('click', redirectToChangePasswordPage);
+  });
+  
+  function redirectToChangePasswordPage() {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const email = params.get('email');
+    // Construct the URL with parameters
+    const url = `change-password.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+    // Redirect to change-password.html with parameters
+    window.location.href = url;
+  }
   
   
   

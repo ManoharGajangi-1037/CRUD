@@ -1,0 +1,93 @@
+/* Add your styles for the MainAdmin page here */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative; /* Add position relative to the header for absolute positioning of button */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .mainadmin-box {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  form h3 {
+    font-size: 18px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  select {
+    width: 50%;
+    padding: 10px;
+    margin-left: 0%;
+    margin-bottom: 10px;
+  }
+  
+  #newUserRole {
+    width: 50%;
+    padding: 10px;
+    margin-left: 0%;
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Add margin to separate the button from form elements */
+  }
+  
+  #backToHomeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 3%;
+    margin-top: 3%;
+    cursor: pointer;
+  }
+  
+  #backToHomeButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the success message */
+  #successMessage {
+    display: none;
+    color: green;
+    margin-bottom: 10px;
+  }
+  

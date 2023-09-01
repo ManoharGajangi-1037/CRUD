@@ -70,6 +70,23 @@
 //     window.location.href = "login.html";
 // });
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Existing code...
+
+  const changePasswordButton = document.getElementById('changePasswordBtn');
+  changePasswordButton.addEventListener('click', redirectToChangePasswordPage);
+});
+
+function redirectToChangePasswordPage() {
+  const name = document.getElementById('adminName').textContent;
+  const email = document.getElementById('adminEmail').textContent;
+
+  // Construct the URL with parameters
+  const url = `change-password.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+
+  // Redirect to change-password.html with parameters
+  window.location.href = url;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
@@ -84,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewGrievancesButton = document.getElementById('viewGrievancesBtn');
     viewGrievancesButton.addEventListener('click', handleViewGrievances);
   });
-  
+  //jkwsjk
   function handleViewGrievances(event) {
     event.preventDefault();
     const hostel = document.getElementById('hostelSelect').value;

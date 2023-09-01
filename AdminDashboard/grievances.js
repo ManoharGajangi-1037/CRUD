@@ -91,7 +91,7 @@
           `;
           grievancesBody.appendChild(row);
         });
-  
+  //
         // Add event listener to status selects
         const statusSelects = document.querySelectorAll('.status-select');
         statusSelects.forEach((select) => {
